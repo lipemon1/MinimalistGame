@@ -6,10 +6,7 @@ namespace MinimalGame.GameStartup
 {
     public class GameStartupLoader : MonoBehaviour
     {
-        [SerializeField] ViewBehavior preLoadingView;
-        [SerializeField] ViewBehavior mainMenuView;
-        
-        void Awake()
+        void Start()
         {
             LoadUserData();
             HidePreLoading();
@@ -23,12 +20,12 @@ namespace MinimalGame.GameStartup
 
         void HidePreLoading()
         {
-            preLoadingView.CloseView();
+            ViewController.CloseView(ViewKeys.Preloading);
         }
 
         void ShowMainMenu()
         {
-            mainMenuView.OpenView();
+            ViewController.OpenView(ViewKeys.Menu);
         }
     }   
 }
