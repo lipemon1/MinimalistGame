@@ -1,25 +1,33 @@
 ﻿using MinimalGame.Data;
+using MinimalGame.Gameplay;
 using UnityEngine;
 
 namespace MinimalGame.GameStartup
 {
     public static class GameStartupLoader
     {
-        static Level currentLevel;
+        static Level _currentLevel;
+        static LevelCreatorBehavior _levelCreator;
 
         static GameStartupLoader()
         {
-            ScenesController.ScenesController.onGameLoaded += onGameSceneLoaded;
+            ScenesController.ScenesController.onGameLoaded += OnGameSceneLoaded;
         }
 
-        static void onGameSceneLoaded()
+        static void OnGameSceneLoaded()
         {
-            Debug.Log($"Load Level [{currentLevel.Id}] here");
+            CreateLevel();
         }
 
         public static void SetNewCurrentLevel(Level newLevel)
         {
-            currentLevel = newLevel;
+            _currentLevel = newLevel;
+        }
+
+        static void CreateLevel()
+        {
+            GameObject levelCreator = GameObject.FindWithTag("LevelCreator");
+            levelCreator.GetComponent<LevelCreatorBehavior>().LoadLevel(_currentLevel);
         }
     }
 }

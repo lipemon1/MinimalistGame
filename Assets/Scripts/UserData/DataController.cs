@@ -13,10 +13,7 @@ namespace MinimalGame.Data
 
         public static void InitializeUserData()
         {
-            Debug.Log("Load user data here");
-
             UserDataPath = Application.persistentDataPath + DataFilename;
-            Debug.Log($"Current Path: [{UserDataPath}]");
 
             if (File.Exists(UserDataPath))
             {
