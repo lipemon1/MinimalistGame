@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MinimalGame.Data;
+using MinimalGame.GameStartup;
+using MinimalGame.ScenesController;
 using MinimalGame.View;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,9 +46,10 @@ namespace MinimalGame.Menu
             }
         }
 
-        void OnLevelClicked(Level level)
+        static void OnLevelClicked(Level level)
         {
-            Debug.Log($"Play Level [{level.Id}]");
+            GameStartupLoader.SetNewCurrentLevel(level);
+            ScenesController.ScenesController.LoadScene(SceneKey.Game);
         }
     }   
 }

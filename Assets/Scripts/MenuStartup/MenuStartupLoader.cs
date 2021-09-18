@@ -2,9 +2,9 @@
 using MinimalGame.View;
 using UnityEngine;
 
-namespace MinimalGame.GameStartup
+namespace MinimalGame.MenuStartup
 {
-    public class GameStartupLoader : MonoBehaviour
+    public class MenuStartupLoader : MonoBehaviour
     {
         void Start()
         {
