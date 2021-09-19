@@ -13,29 +13,25 @@ namespace MinimalGame.Gameplay.Connections
         LeftCorner = 3
     }
     
-    public class ConnectionBehavior : MonoBehaviour
+    public class RotationBehavior : ConnectionBaseComponent
     {
-        [SerializeField] ConnectionPositionMode curPositionMode;
+        [SerializeField] public ConnectionPositionMode CurPositionMode;
         [SerializeField] float rotateAmount;
-        [SerializeField] float rotationSpeed = 0.1f;
 
-        bool isRotating;
         Quaternion from;
         Quaternion to;
 
         int interactionAmount;
         bool canInteractWith = true;
-        
-        void Update()
-        {
-            if (isRotating)
-            {
-                Rotating();
-                TryStopRotation();
-            }
-        }
 
         void OnMouseDown()
+        {
+            if (!IsEnable) return;
+
+            StartCoroutine(ExecuteTouch());
+        }
+
+        IEnumerator ExecuteTouch()
         {
             if (canInteractWith)
                 canInteractWith = false;
@@ -43,45 +39,33 @@ namespace MinimalGame.Gameplay.Connections
             CalculateNewRotation(this.transform.rotation, rotateAmount, ref from, ref to);
             CalculationNewPositionMode();
 
+            yield return new WaitForSeconds(0.1f);
+            ConnectionBehavior.MarkConnectionAsRotated();
+
             canInteractWith = true;
         }
 
         void CalculationNewPositionMode()
         {
-            int curPos = (int) curPositionMode;
+            int curPos = (int) CurPositionMode;
             
             if (curPos == 3)
                 curPos = 0;
             else
                 curPos += 1;
 
-            curPositionMode = (ConnectionPositionMode) curPos;
+            CurPositionMode = (ConnectionPositionMode) curPos;
         }
 
         void CalculateNewRotation(Quaternion curRotation, float rotateAmount, ref Quaternion from, ref Quaternion to)
         {
-            isRotating = false;
             Vector3 curRotVector3 = curRotation.eulerAngles;
             Vector3 targetRotation = new Vector3(curRotVector3.x, (curRotVector3.y + rotateAmount), curRotation.z);
             
             from = curRotation;
             to = Quaternion.Euler(targetRotation);
-            
-            isRotating = true;
-        }
 
-        void TryStopRotation()
-        {
-            //TODO fix this bug - Lerp is not running smooth
-            float diff = Math.Abs(from.eulerAngles.y) - Math.Abs(to.eulerAngles.y);
-            
-            // if (debugDif < 0.001f)
-            //     isRotating = false;
-        }
-
-        void Rotating()
-        {
-            transform.rotation = Quaternion.Lerp(from, to, Time.time * rotationSpeed);
+            this.transform.rotation = to;
         }
     }   
 }

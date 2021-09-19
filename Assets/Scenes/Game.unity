@@ -120,6 +120,101 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &97968697
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2113466101}
+    m_Modifications:
+    - target: {fileID: 2868914356423289357, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_Name
+      value: Level[1]
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389965054334559027, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_Name
+      value: StartPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389965054334559026, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355850266926034678, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389965053636524703, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6c3d5b807ced08b499ab89bfda7d6fc6, type: 3}
+--- !u!4 &493150508 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8349170552154055411, guid: 6c3d5b807ced08b499ab89bfda7d6fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 97968697}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1253830485
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,8 +386,8 @@ Camera:
   m_GameObject: {fileID: 1928712770}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -308,8 +403,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -365,7 +460,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 493150508}
   m_Father: {fileID: 1298340984}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
