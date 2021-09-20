@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace MinimalGame.Gameplay.Connections
 {
     public class ConnectionBehavior : MonoBehaviour, IConnection
     {
         [SerializeField] bool Interactable;
+
+        bool hasEnergy;
 
         RotationBehavior rotationBehavior;
         EnergyFeedbackBehavior energyFeedbackBehavior;
@@ -39,12 +42,19 @@ namespace MinimalGame.Gameplay.Connections
 
         public void EnableEnergy()
         {
+            hasEnergy = true;
             energyFeedbackBehavior.SetEnergy(true);
         }
         
         public void DisableEnergy()
         {
+            hasEnergy = false;
             energyFeedbackBehavior.SetEnergy(false);
+        }
+
+        public bool HasEnergy()
+        {
+            return hasEnergy;
         }
 
         public void CalculatePoints()

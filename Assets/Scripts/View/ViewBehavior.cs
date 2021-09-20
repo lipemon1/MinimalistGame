@@ -46,6 +46,9 @@ namespace MinimalGame.View
 
         private bool IsCorrectlyClose(GameObject ViewObject, bool isOpen)
         {
+            if (ViewObject == null || ViewObject.gameObject == null)
+                return true;
+            
             return !isOpen && !ViewObject.gameObject.activeInHierarchy;
         }
     }

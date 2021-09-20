@@ -9,7 +9,6 @@ namespace MinimalGame.Gameplay.Connections
     public class ConductorPointBehavior : MonoBehaviour
     {
         public SphereCollider Collider;
-        public bool HasEnergy;
         ConductorBehavior conductorBehavior;
 
         [Space] 
@@ -23,15 +22,6 @@ namespace MinimalGame.Gameplay.Connections
 
         public void ReceiveEnergyFromEnergyPoint()
         {
-            SetEnergy(true);
-            
-            StartCoroutine(PassEnergyToPipe());
-        }
-
-        IEnumerator PassEnergyToPipe()
-        {
-            yield return new WaitForSeconds(0.1f);
-
             SendEnergyToPipe();
         }
 
@@ -42,27 +32,15 @@ namespace MinimalGame.Gameplay.Connections
 
         void ReceiveEnergyFromPoint(GameObject emitterPoint)
         {
-            SetEnergy(true);
             SendEnergyToPipe();
         }
 
         public void ReceiveEnergyFromPipe()
         {
-            SetEnergy(true);
             List<ConductorPointBehavior> pointsToPassEnergy = pointsIntersecting;
 
             foreach (ConductorPointBehavior conductorPointBehavior in pointsToPassEnergy)
                 conductorPointBehavior.ReceiveEnergyFromPoint(this.gameObject);
-        }
-
-        void SetEnergy(bool value)
-        {
-            HasEnergy = value;
-        }
-
-        List<ConductorPointBehavior> GetConductorsToPassEnergy(GameObject emitterPoint)
-        {
-            return pointsIntersecting.Where(p => p.gameObject.GetInstanceID() != emitterPoint.GetInstanceID()).ToList();
         }
 
         public void CalculatePoint()

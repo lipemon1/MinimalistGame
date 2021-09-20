@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using MinimalGame.Data;
-using MinimalGame.GameStartup;
+using MinimalGame.GameFlow;
 using MinimalGame.ScenesController;
 using MinimalGame.View;
 using UnityEngine;

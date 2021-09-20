@@ -1,8 +1,9 @@
 ﻿using MinimalGame.Data;
 using MinimalGame.Gameplay;
+using MinimalGame.Gameplay.Connections;
 using UnityEngine;
 
-namespace MinimalGame.GameStartup
+namespace MinimalGame.GameFlow
 {
     public static class GameStartupLoader
     {
@@ -16,7 +17,9 @@ namespace MinimalGame.GameStartup
 
         static void OnGameSceneLoaded()
         {
+            ConnectionsObservable.ResetForNewLevel();
             CreateLevel();
+            LevelEnderController.PrepareForLevel();
         }
 
         public static void SetNewCurrentLevel(Level newLevel)

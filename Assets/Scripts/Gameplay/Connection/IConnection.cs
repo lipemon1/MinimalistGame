@@ -6,8 +6,8 @@ namespace MinimalGame.Gameplay.Connections
 {
     public interface IConnection
     {
-        void EnableEnergy();
         void CalculatePoints();
         void DisableEnergy();
+        bool HasEnergy();
     }
 }
