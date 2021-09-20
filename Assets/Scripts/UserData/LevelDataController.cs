@@ -17,5 +17,19 @@ namespace MinimalGame.Data
                 return _instance;
             }
         }
+
+        public bool HasNextLevel(Level curLevel)
+        {
+            int currentIndex = Levels.IndexOf(curLevel);
+
+            return currentIndex < (Levels.Count - 1);
+        }
+
+        public Level GetNextLevel(Level curLevel)
+        {
+            int currentIndex = Levels.IndexOf(curLevel);
+            int newIndex = currentIndex + 1;
+            return Levels[newIndex];
+        }
     }
 }

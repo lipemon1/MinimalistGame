@@ -18,7 +18,6 @@ namespace MinimalGame.View
     public static class ViewController
     {
         static readonly Dictionary<ViewKeys, IView> CurrentViewsDic = new Dictionary<ViewKeys, IView>();
-        static List<IView> _currentViewsAsList = new List<IView>();
         
         public static void RegisterView(ViewKeys viewKey, IView view)
         {
@@ -33,14 +32,19 @@ namespace MinimalGame.View
             else
             {
                 CurrentViewsDic.Add(viewKey, view);
-                _currentViewsAsList = CurrentViewsDic.Values.ToList();
             }
+        }
+        
+        public static void UnregisterView(ViewKeys viewKey)
+        {
+            if(CurrentViewsDic.ContainsKey(viewKey))
+                CurrentViewsDic.Remove(viewKey);
         }
 
         public static void OpenView(ViewKeys viewKey, bool closeOthers = true)
         {
             if (closeOthers)
-                foreach (IView viewToClose in _currentViewsAsList)
+                foreach (IView viewToClose in CurrentViewsDic.Values)
                     viewToClose.CloseView();
             
             if (CurrentViewsDic.TryGetValue(viewKey, out IView view))
@@ -52,7 +56,7 @@ namespace MinimalGame.View
         public static void CloseView(ViewKeys keyToClose)
         {
             if (CurrentViewsDic.TryGetValue(keyToClose, out IView view))
-                view.OpenView();
+                view.CloseView();
             else
                 Debug.LogError($"No view found [{keyToClose}]");
         }

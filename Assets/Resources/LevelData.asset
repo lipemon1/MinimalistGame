@@ -14,17 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Levels:
   - Id: 1
-    IsDone: 0
-    ResourcesLevelPath: 
+    IsDone: 1
   - Id: 2
     IsDone: 0
-    ResourcesLevelPath: 
   - Id: 3
     IsDone: 0
-    ResourcesLevelPath: 
-  - Id: 4
-    IsDone: 0
-    ResourcesLevelPath: 
-  - Id: 5
-    IsDone: 0
-    ResourcesLevelPath: 

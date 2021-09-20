@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 
 namespace MinimalGame.Data
@@ -26,6 +24,19 @@ namespace MinimalGame.Data
                 UserData = new UserData();
                 Debug.Log("User Data fresh new");
             }
+        }
+
+        public static void FinishLevel(Level level)
+        {
+            UserData.FinishLevel(level);
+            SaveCurrentData();
+        }
+
+        static void SaveCurrentData()
+        {
+            string json = JsonUtility.ToJson(UserData);
+            File.WriteAllText(UserDataPath, json);
+            Debug.Log("Data saved at: " + UserDataPath);
         }
     }   
 }

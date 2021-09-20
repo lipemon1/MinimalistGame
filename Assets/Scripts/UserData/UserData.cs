@@ -15,5 +15,10 @@ namespace MinimalGame.Data
         {
             PlayerLevels = levels;
         }
+
+        public void FinishLevel(Level level)
+        {
+            PlayerLevels.Add(level);
+        }
     }
 }

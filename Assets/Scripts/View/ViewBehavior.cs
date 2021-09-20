@@ -44,6 +44,11 @@ namespace MinimalGame.View
             
         }
 
+        void OnDestroy()
+        {
+            ViewController.UnregisterView(Key);
+        }
+
         private bool IsCorrectlyClose(GameObject ViewObject, bool isOpen)
         {
             if (ViewObject == null || ViewObject.gameObject == null)

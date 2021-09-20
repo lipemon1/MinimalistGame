@@ -19,7 +19,12 @@ namespace MinimalGame.GameFlow
         static void OnConnectionChanged(int amountWithEnergy)
         {
             if(_energyPointsToFollow.Count(ep => ep.HasEnergy()) == _energyPointsToFollow.Count)
-                ViewController.OpenView(ViewKeys.Endgame);
+                OnEndLevel();
+        }
+
+        static void OnEndLevel()
+        {
+            ViewController.OpenView(ViewKeys.Endgame);
         }
 
         public static void RegisterEnergyPoint(IEnergyPoint newEnergyPoint)
