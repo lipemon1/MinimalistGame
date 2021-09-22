@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MinimalGame.Audio;
 using MinimalGame.Data;
 using MinimalGame.GameFlow;
 using MinimalGame.ScenesController;
@@ -22,6 +23,7 @@ namespace MinimalGame.Menu
 
         static void OnBackButtonClicked()
         {
+            SfxEmitter.Instance.PlaySfx(SfxKey.InterfaceClick);
             ViewController.OpenView(ViewKeys.Menu);
         }
 
@@ -48,6 +50,7 @@ namespace MinimalGame.Menu
 
         static void OnLevelClicked(Level level)
         {
+            SfxEmitter.Instance.PlaySfx(SfxKey.InterfaceClick);
             GameStartupLoader.SetNewCurrentLevel(level);
             ScenesController.ScenesController.LoadScene(SceneKey.Game);
         }

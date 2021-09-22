@@ -19,7 +19,8 @@ namespace MinimalGame.Gameplay.Connections
         {
             if (!IsEnable) return;
 
-            StartCoroutine(ExecuteTouch());
+            if(ConnectionsObservable.CanRotateConnections)
+                StartCoroutine(ExecuteTouch());
         }
 
         IEnumerator ExecuteTouch()

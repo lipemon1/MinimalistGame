@@ -1,4 +1,5 @@
 ﻿using System;
+using MinimalGame.Audio;
 using MinimalGame.Data;
 using MinimalGame.ScenesController;
 using MinimalGame.View;
@@ -23,6 +24,7 @@ namespace MinimalGame.Menu
 
         void OnDeleteDataClicked()
         {
+            EmitSfx();
             DataController.EraseData();
             ScenesController.ScenesController.LoadScene(SceneKey.Menu);
         }
@@ -35,12 +37,19 @@ namespace MinimalGame.Menu
 
         void OnPlayButtonClicked()
         {
+            EmitSfx();
             ViewController.OpenView(ViewKeys.LevelSelection);
         }
 
         static void OnExitButtonClicked()
         {
+            EmitSfx();
             Application.Quit();
+        }
+
+        static void EmitSfx()
+        {
+            SfxEmitter.Instance.PlaySfx(SfxKey.InterfaceClick);
         }
     }   
 }

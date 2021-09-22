@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using MinimalGame.Audio;
 using UnityEngine;
 
 namespace MinimalGame.Gameplay.Connections
@@ -9,7 +10,8 @@ namespace MinimalGame.Gameplay.Connections
     {
         static IEnergyStart _energyPoint ;
         static List<IConnection> _connections = new List<IConnection>();
-
+        public static bool CanRotateConnections;
+        
         public delegate void OnConnectionChangeDelegate(int amountWithEnergy);
         public static OnConnectionChangeDelegate OnConnectionChanged;
 
@@ -30,6 +32,8 @@ namespace MinimalGame.Gameplay.Connections
 
         static void OnAnyConnectionRotated(IConnection connectionChanged)
         {
+            SfxEmitter.Instance.PlaySfx(SfxKey.ChangeConductor);
+            
             foreach (IConnection connection in _connections)
             {
                 connection.DisableEnergy();
@@ -43,8 +47,14 @@ namespace MinimalGame.Gameplay.Connections
             OnConnectionChanged?.Invoke(AmountOfEnergyConnections());
         }
 
+        public static void GameOver()
+        {
+            CanRotateConnections = false;
+        }
+
         public static void ResetForNewLevel()
         {
+            CanRotateConnections = true;
             _energyPoint = null;
             _connections = new List<IConnection>();
         }

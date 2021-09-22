@@ -1,4 +1,5 @@
-﻿using MinimalGame.Data;
+﻿using MinimalGame.Audio;
+using MinimalGame.Data;
 using MinimalGame.GameFlow;
 using MinimalGame.ScenesController;
 using MinimalGame.View;
@@ -21,12 +22,15 @@ namespace MinimalGame.EndLevel
 
         void OnMainMenuClicked()
         {
+            SfxEmitter.Instance.PlaySfx(SfxKey.InterfaceClick);
             ScenesController.ScenesController.LoadScene(SceneKey.Menu);
         }
 
         protected override void OnOpenView()
         {
             base.OnOpenView();
+            
+            SfxEmitter.Instance.PlaySfx(SfxKey.Win);
             
             GameStartupLoader.FinishLevel();
 
@@ -38,6 +42,7 @@ namespace MinimalGame.EndLevel
 
         void OnNextLevelButtonClicked()
         {
+            SfxEmitter.Instance.PlaySfx(SfxKey.InterfaceClick);
             GameStartupLoader.SetNewCurrentLevel(nextLevel);
             GameStartupLoader.LoadLevel();
         }

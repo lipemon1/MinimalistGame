@@ -24,6 +24,7 @@ namespace MinimalGame.GameFlow
 
         static void OnEndLevel()
         {
+            ConnectionsObservable.GameOver();
             ViewController.OpenView(ViewKeys.Endgame);
         }
 
