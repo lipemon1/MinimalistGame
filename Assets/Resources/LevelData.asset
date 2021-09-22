@@ -15,7 +15,10 @@ MonoBehaviour:
   Levels:
   - Id: 1
     IsDone: 1
+    ResourcesLevelPrefabPath: 
   - Id: 2
-    IsDone: 0
+    IsDone: 1
+    ResourcesLevelPrefabPath: 
   - Id: 3
-    IsDone: 0
+    IsDone: 1
+    ResourcesLevelPrefabPath: 

@@ -12,11 +12,13 @@ namespace MinimalGame.Menu
         public Button ItemButton;
         public Text ItemLabel;
         public GameObject IsDoneObject;
+        public GameObject BlockedObject;
 
-        public void InitializeLevelItem(Level level, Action onButtonClicked)
+        public void InitializeLevelItem(Level level, bool canPlay, Action onButtonClicked)
         {
             ItemLabel.text = "Level " + level.Id;
             IsDoneObject.gameObject.SetActive(level.IsDone);
+            BlockedObject.SetActive(!canPlay);
             
             ItemButton.onClick.RemoveAllListeners();
             ItemButton.onClick.AddListener(() => onButtonClicked());

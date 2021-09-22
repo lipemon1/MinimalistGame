@@ -42,7 +42,7 @@ namespace MinimalGame.Menu
             foreach (Level level in LevelDataController.Instance.Levels)
             {
                 LevelItemBehavior levelBehavior = Instantiate(levelPrefab, levelsHolder);
-                levelBehavior.InitializeLevelItem(level, () => OnLevelClicked(level));
+                levelBehavior.InitializeLevelItem(level, LevelDataController.Instance.CanPlayLevel(level), () => OnLevelClicked(level));
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MinimalGame.Data
@@ -18,6 +19,21 @@ namespace MinimalGame.Data
             }
         }
 
+        public void ReceiveNewData(List<Level> newLevels)
+        {
+            foreach (Level level in Levels)
+                level.IsDone = false;
+            
+            foreach (Level newLevel in newLevels)
+            {
+                foreach (Level level in Levels.Where(level => level.Id == newLevel.Id))
+                {
+                    level.IsDone = newLevel.IsDone;
+                    break;
+                }
+            }
+        }
+
         public bool HasNextLevel(Level curLevel)
         {
             int currentIndex = Levels.IndexOf(curLevel);
@@ -30,6 +46,18 @@ namespace MinimalGame.Data
             int currentIndex = Levels.IndexOf(curLevel);
             int newIndex = currentIndex + 1;
             return Levels[newIndex];
+        }
+
+        public bool CanPlayLevel(Level level)
+        {
+            int levelIndex = Levels.IndexOf(level);
+
+            //if is first level
+            if (levelIndex == 0) return true;
+
+            int levelToCheckIndex = levelIndex - 1;
+
+            return Levels[levelToCheckIndex].IsDone;
         }
     }
 }

@@ -7,21 +7,21 @@ namespace MinimalGame.Data
     {
         public int Id;
         public bool IsDone;
-        string resourcesLevelPrefabPath;
+        public string ResourcesLevelPrefabPath;
 
         public Level(int id, bool isDone, string resourcesLevelPrefabPath)
         {
             this.Id = id;
             this.IsDone = isDone;
-            this.resourcesLevelPrefabPath = resourcesLevelPrefabPath;
+            this.ResourcesLevelPrefabPath = resourcesLevelPrefabPath;
         }
 
         public string GetLevelPrefabPath()
         {
-            if (string.IsNullOrEmpty(resourcesLevelPrefabPath))
-                resourcesLevelPrefabPath = $"LevelsPrefabs/Level[{Id}]";
+            if (string.IsNullOrEmpty(ResourcesLevelPrefabPath))
+                ResourcesLevelPrefabPath = $"LevelsPrefabs/Level[{Id}]";
 
-            return resourcesLevelPrefabPath;
+            return ResourcesLevelPrefabPath;
         }
     }   
 }

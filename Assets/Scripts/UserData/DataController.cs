@@ -24,6 +24,8 @@ namespace MinimalGame.Data
                 UserData = new UserData();
                 Debug.Log("User Data fresh new");
             }
+            
+            LevelDataController.Instance.ReceiveNewData(UserData.PlayerLevels);
         }
 
         public static void FinishLevel(Level level)
@@ -37,6 +39,12 @@ namespace MinimalGame.Data
             string json = JsonUtility.ToJson(UserData);
             File.WriteAllText(UserDataPath, json);
             Debug.Log("Data saved at: " + UserDataPath);
+        }
+
+        public static void EraseData()
+        {
+            UserData = new UserData();
+            SaveCurrentData();
         }
     }   
 }
