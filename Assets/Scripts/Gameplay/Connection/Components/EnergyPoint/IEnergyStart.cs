@@ -8,5 +8,6 @@ namespace MinimalGame.Gameplay.Connections
     {
         void TryEmitEnergy();
         void CalculateEnergyPointsToConduct();
+        void OnWin();
     }   
 }

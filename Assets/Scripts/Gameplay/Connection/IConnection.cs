@@ -9,5 +9,6 @@ namespace MinimalGame.Gameplay.Connections
         void CalculatePoints();
         void DisableEnergy();
         bool HasEnergy();
+        void OnWin();
     }
 }

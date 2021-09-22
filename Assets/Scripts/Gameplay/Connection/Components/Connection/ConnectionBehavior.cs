@@ -6,12 +6,14 @@ namespace MinimalGame.Gameplay.Connections
     public class ConnectionBehavior : MonoBehaviour, IConnection
     {
         [SerializeField] bool Interactable;
+        [SerializeField] Animator Anim;
 
         bool hasEnergy;
 
         RotationBehavior rotationBehavior;
         EnergyFeedbackBehavior energyFeedbackBehavior;
         ConductorBehavior conductorBehavior;
+        static readonly int Win = Animator.StringToHash("Win");
 
         void Awake()
         {
@@ -55,6 +57,11 @@ namespace MinimalGame.Gameplay.Connections
         public bool HasEnergy()
         {
             return hasEnergy;
+        }
+
+        public void OnWin()
+        {
+            Anim.SetTrigger(Win);
         }
 
         public void CalculatePoints()

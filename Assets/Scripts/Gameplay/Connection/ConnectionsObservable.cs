@@ -32,7 +32,8 @@ namespace MinimalGame.Gameplay.Connections
 
         static void OnAnyConnectionRotated(IConnection connectionChanged)
         {
-            SfxEmitter.Instance.PlaySfx(SfxKey.ChangeConductor);
+            if(SfxEmitter.Instance != null)
+                SfxEmitter.Instance.PlaySfx(SfxKey.ChangeConductor);
             
             foreach (IConnection connection in _connections)
             {
@@ -47,9 +48,14 @@ namespace MinimalGame.Gameplay.Connections
             OnConnectionChanged?.Invoke(AmountOfEnergyConnections());
         }
 
-        public static void GameOver()
+        public static void OnWinGame()
         {
             CanRotateConnections = false;
+
+            foreach (IConnection connection in _connections)
+                connection.OnWin();
+            
+            _energyPoint.OnWin();
         }
 
         public static void ResetForNewLevel()

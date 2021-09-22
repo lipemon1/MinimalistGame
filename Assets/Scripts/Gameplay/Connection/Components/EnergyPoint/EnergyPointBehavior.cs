@@ -11,6 +11,8 @@ namespace MinimalGame.Gameplay.Connections
         public SphereCollider EnergyPointCollider;
         [SerializeField] List<Collider> colliders = new List<Collider>();
         [SerializeField] List<ConductorPointBehavior> pointsToConduct = new List<ConductorPointBehavior>();
+        [SerializeField] Animator Anim;
+        static readonly int Win = Animator.StringToHash("Win");
 
         void Awake()
         {
@@ -47,6 +49,11 @@ namespace MinimalGame.Gameplay.Connections
                         pointsToConduct.Add(pointToConduct);
                 }
             }
+        }
+
+        public void OnWin()
+        {
+            Anim.SetTrigger(Win);
         }
     }   
 }

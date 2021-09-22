@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 1523630590350440926}
-  HasEnergy: 0
   pointsIntersecting: []
   colliders: []
 --- !u!1 &5061983609683407121
@@ -124,6 +123,7 @@ GameObject:
   - component: {fileID: 7632217381338566454}
   - component: {fileID: 2924104247151041039}
   - component: {fileID: 5839881600025009024}
+  - component: {fileID: 1160641321535540652}
   m_Layer: 0
   m_Name: ConnectionBehavior
   m_TagString: Untagged
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interactable: 1
+  Anim: {fileID: 1160641321535540652}
 --- !u!114 &7632217381338566454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsEnable: 0
-  CurPositionMode: 0
   rotateAmount: 45
 --- !u!114 &2924104247151041039
 MonoBehaviour:
@@ -264,6 +264,25 @@ MonoBehaviour:
   IsEnable: 0
   TopConductor: {fileID: 4304769830920243844}
   BottomConductor: {fileID: 8922168693130752476}
+--- !u!95 &1160641321535540652
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061983609683407121}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b03a7b8eedfe094eb3f6b3cc9e34116, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6777127871425718352
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +388,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 4439255236447719102}
-  HasEnergy: 0
   pointsIntersecting: []
   colliders: []
